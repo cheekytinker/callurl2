@@ -1,20 +1,23 @@
-import { describe, it, beforeEach } from 'mocha';
+import { describe, it } from 'mocha';
+import sinon from 'sinon';
 import MyService from './../src/myService';
 
-let myService = null;
-describe('constructor injection', () => {
-  beforeEach(() => {
-    const mockRepository = {
-      find() {
 
+describe('constructor injection', () => {
+  it('allows dependency' +
+    ' to be passed in constuctor', () => {
+    let myService = null;
+    const repositoryInterface = {
+      find() {
+        return [];
       },
     };
+    const mockRepository = sinon.mock(repositoryInterface);
+    mockRepository.expects('find').once().returns([]);
     myService = new MyService({
-      repository: mockRepository,
+      repository: mockRepository.object,
     });
-  });
-
-  it('allows dependency to be passed in constuctor', () => {
     myService.getAll();
+    mockRepository.verify();
   });
 });

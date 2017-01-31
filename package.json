@@ -4,7 +4,7 @@
   "description": "My proj",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive --require babel-core/register",
+    "test": "mocha --recursive --watch --require babel-core/register",
     "start": "node build/index.js"
   },
   "author": "",
@@ -24,7 +24,8 @@
     "gulp-plumber": "^1.1.0",
     "gulp-sourcemaps": "^2.4.0",
     "gulp-watch": "^4.3.11",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.7"
   },
   "dependencies": {
     "elasticsearch": "^12.1.3",
